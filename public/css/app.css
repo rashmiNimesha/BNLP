@@ -1,1 +1,175 @@
+.navbar {
+    width: 100%;
+    background: #17163E;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+.navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.navbar-links li a:hover {
+    color: #81809e;
+}
 
+#bnpl-title {
+    color: #17163E;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#bnpl-welcome {
+    color: #17163E;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background-color: #17163E;
+    color: white;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    align-items: center;
+}
+
+/* Button group */
+.btn-group {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #81809e;
+}
+
+.features-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+#explore-features {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #17163E;
+}
+
+.feature-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.feature-item {
+    background: #8f959c;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 24px 32px;
+    width: 250px;
+    min-height: 200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.feature-item h3 {
+    color: #17163E;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.feature-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* Head section layout */
+.head-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.first-content {
+    flex: 1 1 320px;
+    min-width: 280px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.second-content {
+    flex: 1 1 320px;
+    min-width: 280px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.bnpl-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 900px) {
+    .head-section {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .first-content, .second-content {
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    .btn-group {
+        justify-content: center;
+    }
+}

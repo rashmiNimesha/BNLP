@@ -17,8 +17,8 @@ use App\Http\Controllers\LoanDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
-Route::get('/generate', [LoanGenerationController::class, 'index']);
-Route::get('/dashboard', [LoanDashboardController::class, 'index']);
+Route::get('/generate', [LoanGenerationController::class, 'index'])->name('generate');
+Route::get('/dashboard', [LoanDashboardController::class, 'index'])->name('dashboard');

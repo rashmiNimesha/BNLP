@@ -21,7 +21,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/loans/generate', [LoanController::class, 'generate']);
-
-// Route::post('/loans/generate', function () {
-//     return response()->json(['message' => 'Test route working']);
-// });
