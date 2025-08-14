@@ -23,4 +23,9 @@ class LoanGenerated implements ShouldBroadcast
     {
         return new Channel('loans');
     }
+
+    public function broadcastWith()
+    {
+        return ['loan' => $this->loan];
+    }
 }
