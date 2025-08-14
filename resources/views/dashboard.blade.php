@@ -30,7 +30,6 @@
 
 @section('scripts')
     <script>
-        // Listen for real-time updates
         Echo.channel('loans')
             .listen('LoanGenerated', (e) => {
                 const loan = e.loan;
@@ -47,12 +46,15 @@
                 document.querySelector('#loans-table tbody').appendChild(row);
             })
             .listen('InstallmentPaid', (e) => {
-                const loanId = e.loan_id;
+                const loanId = e.installment.loan_id;
                 const row = document.querySelector(`tr[data-loan-id="${loanId}"]`);
                 if (row) {
-                    // Fetch updated loan data via AJAX or approximate update
-                    fetch(`/dashboard`)  // Reload page for simplicity, or implement AJAX update
-                        .then(() => location.reload());
+                    let paidCount = parseInt(row.querySelector('td:nth-child(3)').textContent.split(' / ')[0]) + 1;
+                    let totalCount = row.querySelector('td:nth-child(3)').textContent.split(' / ')[1];
+                    let totalPaid = parseFloat(row.querySelector('td:nth-child(4)').textContent) + parseFloat(e.installment.amount);
+                    row.querySelector('td:nth-child(3)').textContent = `${paidCount} / ${totalCount}`;
+                    row.querySelector('td:nth-child(4)').textContent = totalPaid;
+                    
                 }
             })
             .listen('LoanCompleted', (e) => {

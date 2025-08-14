@@ -9,6 +9,7 @@ use App\Models\Loan;
 use App\Models\Installment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LoanController extends Controller
 {
@@ -40,7 +41,10 @@ class LoanController extends Controller
                 $currentDueDate = $currentDueDate->addMinutes($periodMinutes);
             }
 
+            $loan->load('installments');
+
             broadcast(new LoanGenerated($loan));
+            Log::info('LoanGenerated broadcast', ['loan_id' => $loan->id]);
 
             $generatedLoans[] = $loan;
         }

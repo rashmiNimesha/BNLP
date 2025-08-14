@@ -12,13 +12,15 @@
     <script>
         window.Echo = new Echo({
             broadcaster: 'pusher',
-            key: 'bnlp-key',  
-            wsHost: window.location.hostname,
-            wsPort: 6001,
+            key: '{{ env('PUSHER_APP_KEY', 'bnlp-key') }}',
+            wsHost: '{{ env('PUSHER_HOST', '127.0.0.1') }}',
+            wsPort: {{ env('PUSHER_PORT', 6001) }},
             forceTLS: false,
             disableStats: true,
             enabledTransports: ['ws']
         });
+
+        console.log('Echo initialized:', window.Echo);
     </script>
 </head>
 <body>
