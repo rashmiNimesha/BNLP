@@ -19,7 +19,7 @@
     </div>
 
     <div class="features-wrapper">
-        <h2 id="explore-features">Explore Our Features</h2>
+        <h2 id="sub-headings">Explore Our Features</h2>
         <div class="feature-list">
             <div class="feature-item">
                 <h3>Buy Now, Pay Later</h3>

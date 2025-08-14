@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Generate Loans</h1>
+    <h1 id= "sub-headings">Generate Loans</h1>
     <form id="generate-form">
         <div class="mb-3">
             <label for="loan_amount" class="form-label">Loan Amount</label>

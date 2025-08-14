@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Loan Dashboard</h1>
+    <h1 id="sub-headings">Loan Dashboard</h1>
     <table class="table table-striped" id="loans-table">
         <thead>
             <tr>

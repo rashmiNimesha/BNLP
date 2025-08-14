@@ -72,7 +72,7 @@
     margin-top: 40px;
 }
 
-#explore-features {
+#sub-headings {
     text-align: center;
     margin-bottom: 24px;
     color: #17163E;
@@ -90,7 +90,7 @@
 }
 
 .feature-item {
-    background: #8f959c;
+    background: #89c2d9;
     border: 1px solid #dee2e6;
     border-radius: 8px;
     padding: 24px 32px;
@@ -111,7 +111,7 @@
 }
 
 .feature-item p {
-    color: #ffffff;
+    color: #1c0954;
     font-size: 1rem;
 }
 
@@ -173,3 +173,26 @@
         justify-content: center;
     }
 }
+
+#loans-table{
+    width: 100%;
+    border-collapse: collapse;
+    color: #17163E;
+}
+
+#loans-table th, #loans-table td {
+    padding: 12px 15px;
+    border: 1px solid ;
+    text-align: left;
+}
+
+#loans-table th {
+    background: #17163E;
+    color: #ffffff;
+}
+
+#loans-table.table-striped > tbody > tr:nth-of-type(even) {
+    --bs-table-accent-bg: #89c2d9 !important;
+    background-color: #89c2d9 !important;
+}
+
