@@ -8,7 +8,7 @@ class GenerateLoansRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;  // Public for demo
+        return true; 
     }
 
     public function rules()

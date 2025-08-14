@@ -21,7 +21,13 @@
                     <td>{{ $loan->installmentsPaidCount() }} / {{ $loan->installments->count() }}</td>
                     <td>{{ $loan->totalPaid() }}</td>
                     <td>{{ $loan->status }}</td>
-                    <td>{{ $loan->nextDueDate() ? $loan->nextDueDate()->format('Y-m-d H:i') : 'N/A' }}</td>
+                    <td>
+                        {{
+                            $loan->nextDueDate()
+                                ? $loan->nextDueDate()->setTimezone('Asia/Colombo')->format('Y-m-d H:i')
+                                : 'N/A'
+                        }}
+                    </td>
                 </tr>
             @endforeach
         </tbody>

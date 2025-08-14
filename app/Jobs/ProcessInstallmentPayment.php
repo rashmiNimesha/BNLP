@@ -32,7 +32,6 @@ class ProcessInstallmentPayment implements ShouldQueue
         }
 
         try {
-            // Simulate payment processing (assume success for demo)
             $this->installment->update([
                 'status' => 'paid',
                 'paid_at' => Carbon::now(),
@@ -50,7 +49,6 @@ class ProcessInstallmentPayment implements ShouldQueue
             $this->installment->loan->updateStatus();
         } catch (\Exception $e) {
             Log::error('Payment processing failed: ' . $e->getMessage());
-            // Handle failure: mark as failed or retry
             PaymentTransaction::create([
                 'installment_id' => $this->installment->id,
                 'amount' => $this->installment->amount,
