@@ -31,7 +31,9 @@ class Loan extends Model
     public function nextDueDate()
     {
         $installment = $this->installments()->where('status', 'pending')->orderBy('due_date')->first();
-        return $installment ? \Carbon\Carbon::parse($installment->due_date) : null;
+        return $installment 
+            ? \Carbon\Carbon::parse($installment->due_date)->setTimezone('Asia/Colombo') 
+            : null;
     }
 
     public function updateStatus()

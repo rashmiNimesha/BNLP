@@ -24,4 +24,15 @@ class Installment extends Model
     {
         return $this->hasOne(PaymentTransaction::class);
     }
+
+    /**
+     * Calculate due date for an installment.
+     * @param \DateTime|string $baseDate
+     * @param int $periodMinutes
+     * @return \Carbon\Carbon
+     */
+    public static function calculateDueDate($baseDate, $periodMinutes)
+    {
+        return \Carbon\Carbon::parse($baseDate)->addMinutes($periodMinutes);
+    }
 }

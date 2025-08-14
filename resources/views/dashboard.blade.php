@@ -24,7 +24,7 @@
                     <td>
                         {{
                             $loan->nextDueDate()
-                                ? $loan->nextDueDate()->setTimezone('Asia/Colombo')->format('Y-m-d H:i')
+                                ? $loan->nextDueDate()->format('Y-m-d H:i')
                                 : 'N/A'
                         }}
                     </td>
