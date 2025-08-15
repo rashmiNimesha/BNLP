@@ -258,6 +258,8 @@ form#generate-form .btn-primary {
     font-size: 1rem;
     padding: 1rem 1.5rem;
     margin-top: 1rem;
+    color: #17163E;
+    background-color: #89c2d9;
 }
 
 .mt-3 {

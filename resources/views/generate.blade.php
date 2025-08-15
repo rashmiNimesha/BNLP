@@ -43,6 +43,7 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById('response').innerHTML = '<div class="alert alert-success">Loans generated! Check dashboard.</div>';
+                document.getElementById('generate-form').reset();
             })
             .catch(error => {
                 document.getElementById('response').innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';

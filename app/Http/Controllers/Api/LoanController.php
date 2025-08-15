@@ -29,7 +29,7 @@ class LoanController extends Controller
             ]);
 
             $installmentAmount = $loanAmount / $installmentsPerLoan;
-            $currentDueDate = Carbon::now();
+            $currentDueDate = Carbon::now()->addMinutes($periodMinutes);
 
             for ($j = 0; $j < $installmentsPerLoan; $j++) {
                 Installment::create([
