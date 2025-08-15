@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoanGenerationController;
+use App\Http\Controllers\LoanDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+
+Route::get('/generate', [LoanGenerationController::class, 'index'])->name('generate');
+Route::get('/dashboard', [LoanDashboardController::class, 'index'])->name('dashboard');

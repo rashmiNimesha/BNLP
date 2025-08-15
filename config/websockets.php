@@ -6,22 +6,21 @@ return [
         'path' => env('WEBSOCKETS_PATH', 'laravel-websockets'),
         'middleware' => [
             'web',
-            \BeyondCode\LaravelWebsockets\Dashboard\Http\Middleware\Authorize::class,
+            \BeyondCode\LaravelWebSockets\Dashboard\Http\Middleware\Authorize::class,
         ],
     ],
     'apps' => [
         [
-            'id' => env('PUSHER_APP_ID'),
-            'name' => env('APP_NAME'),
-            'key' => env('PUSHER_APP_KEY'),
-            'secret' => env('PUSHER_APP_SECRET'),
-            'path' => env('PUSHER_APP_PATH'),
+            'id' => env('PUSHER_APP_ID', 'bnlp-app'),
+            'name' => env('APP_NAME', 'BNLP'),
+            'key' => env('PUSHER_APP_KEY'), // Remove fallback to ensure it uses .env
+            'secret' => env('PUSHER_APP_SECRET'), // Remove fallback
+            'path' => env('PUSHER_APP_PATH', null),
             'capacity' => null,
-            'enable_client_messages' => false,
-            'enable_statistics' => true,
+            'enable_client_messages' => true,
+            'enable_statistics' => false,
         ],
     ],
-    'app_provider' => \BeyondCode\LaravelWebsockets\Apps\ArrayAppProvider::class,
     'ssl' => [
         'local_cert' => env('WEBSOCKETS_SSL_LOCAL_CERT', null),
         'local_pk' => env('WEBSOCKETS_SSL_LOCAL_PK', null),
