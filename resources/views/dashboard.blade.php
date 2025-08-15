@@ -11,6 +11,7 @@
                 <th>Total Amount Paid</th>
                 <th>Status</th>
                 <th>Next Payment Due</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,14 +29,75 @@
                                 : 'N/A'
                         }}
                     </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary view-graph-btn" data-loan-id="{{ $loan->id }}">View Graph</button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <div id="chart-container" style="display:none; margin-top:2rem; text-align:center;">
+        <canvas id="installment-chart" width="250" height="250" style="max-width:400px; max-height:400px;"></canvas>
+    </div>
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        const loanInstallmentData = {
+            @foreach($loans as $loan)
+                "{{ $loan->id }}": {
+                    paid: {{ $loan->installmentsPaidCount() }},
+                    pending: {{ $loan->installments->count() - $loan->installmentsPaidCount() }},
+                    total: {{ $loan->installments->count() }},
+                    amountPaid: {{ $loan->totalPaid() }},
+                    amountPending: {{ $loan->amount - $loan->totalPaid() }}
+                },
+            @endforeach
+        };
+
+        let chartInstance = null;
+
+        document.querySelectorAll('.view-graph-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const loanId = this.getAttribute('data-loan-id');
+                const data = loanInstallmentData[loanId];
+                if (!data) return;
+
+                document.getElementById('chart-container').style.display = 'block';
+
+                const ctx = document.getElementById('installment-chart').getContext('2d');
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
+                chartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [
+                            `Paid (${data.paid} installments, LKR ${data.amountPaid})`,
+                            `Pending (${data.pending} installments, LKR ${data.amountPending})`
+                        ],
+                        datasets: [{
+                            data: [data.paid, data.pending],
+                            backgroundColor: ['#89c2d9', '#dee2e6'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            title: {
+                                display: true,
+                                text: `Loan #${loanId} Installment Status`
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
         Echo.channel('loans')
             .listen('LoanGenerated', (e) => {
                 const loan = e.loan;
@@ -48,6 +110,9 @@
                     <td>0</td>
                     <td>${loan.status}</td>
                     <td>${loan.installments && loan.installments.length > 0 ? loan.installments[0].due_date : 'N/A'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary view-graph-btn" data-loan-id="${loan.id}">View Graph</button>
+                    </td>
                 `;
                 document.querySelector('#loans-table tbody').appendChild(row);
             })
