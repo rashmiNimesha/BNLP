@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('installments:process')->everyTenMinutes();
+        // $schedule->command('installments:process')->everyTenMinutes();
+          $schedule->command('installments:process')->everyTwoMinutes();
+
     }
 
     /**
