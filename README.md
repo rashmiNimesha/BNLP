@@ -7,10 +7,13 @@ Note: This is an actively developed project. Please refer to the developement br
 
 Features
 
- Core API endpoints for loan generation 
- API endpoints load loans and installments to the dashboard
- use laravel websockets to real time Updates
- Modular and scalable architecture
+•	Core API endpoints for loan generation 
+•	API endpoints load loans and installments to the dashboard
+•	Use Laravel web sockets to real time Updates
+•	Modular and scalable architecture
+•	Loan status filtering and search
+•	Data visualization of loan details using Pie Chart
+
  
 Tech Stack
 
