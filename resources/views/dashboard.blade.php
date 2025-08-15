@@ -2,6 +2,11 @@
 
 @section('content')
     <h1 id="sub-headings">Loan Dashboard</h1>
+    <div class="mb-3" style="text-align:right;">
+        <input type="text" id="status-search" placeholder="Search by status (e.g. pending)" class="form-control" style="width:200px;display:inline-block;">
+        <button id="search-btn" class="btn btn-primary btn-sm" style="margin-left:8px;">Search</button>
+        <button id="reset-btn" class="btn btn-secondary btn-sm" style="margin-left:4px;">Reset</button>
+    </div>
     <table class="table table-striped" id="loans-table">
         <thead>
             <tr>
@@ -135,5 +140,20 @@
                     row.querySelector('td:nth-child(5)').textContent = 'completed';
                 }
             });
+
+        // Loan status search/filter logic
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const query = document.getElementById('status-search').value.trim().toLowerCase();
+            document.querySelectorAll('#loans-table tbody tr').forEach(row => {
+                const status = row.querySelector('td:nth-child(5)').textContent.trim().toLowerCase();
+                row.style.display = query && status !== query ? 'none' : '';
+            });
+        });
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            document.getElementById('status-search').value = '';
+            document.querySelectorAll('#loans-table tbody tr').forEach(row => {
+                row.style.display = '';
+            });
+        });
     </script>
 @endsection
