@@ -3,7 +3,7 @@ BNLP
 Overview
 
 BNLP Dashboard is a Laravel-based application for managing and processing installments. It includes scheduled tasks and a console command for handling installment processing.
-Note: This is an actively developed project. Please refer to the developement branch for the latest updates.
+
 
 Features
 
